@@ -393,6 +393,8 @@ module CookieJar
             # must be in format '"port,port"'
             ports = keyvalue.split(/,\s*/)
             args[:ports] = ports.map(&:to_i)
+          when :samesite
+            args[:samesite] = keyvalue.downcase
           else
             fail InvalidCookieError, "Unknown cookie parameter '#{key}'"
           end
